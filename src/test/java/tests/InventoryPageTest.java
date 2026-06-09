@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import pages.InventoryPage;
 import pages.LoginPage;
 import utils.ConfigReader;
+import utils.ScreenshotUtil;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -23,12 +24,19 @@ public class InventoryPageTest extends BaseTest{
 
     @Test
     void addProductToCartTest(){
-        LoginPage loginPage=new LoginPage(page);
-        loginPage.navigate();
-        InventoryPage inventoryPage=loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
-        inventoryPage.addBackpackToCart();
+        try{
+            LoginPage loginPage=new LoginPage(page);
+            loginPage.navigate();
+            InventoryPage inventoryPage=loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
+            inventoryPage.addBackpackToCart();
 
-        assertEquals("1",inventoryPage.getCartBadgeCount());
+            assertEquals("2",inventoryPage.getCartBadgeCount());
+        }
+        catch (AssertionError e){
+            ScreenshotUtil.attachScreenshot(page);
+            throw e;
+        }
+
     }
 
     @Test
