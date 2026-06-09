@@ -30,7 +30,7 @@ public class InventoryPageTest extends BaseTest{
             InventoryPage inventoryPage=loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
             inventoryPage.addBackpackToCart();
 
-            assertEquals("1",inventoryPage.getCartBadgeCount());
+            assertEquals("2",inventoryPage.getCartBadgeCount());
         }
         catch (AssertionError e){
             ScreenshotUtil.attachScreenshot(page);
