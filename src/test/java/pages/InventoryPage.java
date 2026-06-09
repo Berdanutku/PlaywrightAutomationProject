@@ -1,6 +1,7 @@
 package pages;
 
 import com.microsoft.playwright.Page;
+import utils.ConfigReader;
 
 public class InventoryPage {
 
@@ -30,5 +31,12 @@ public class InventoryPage {
 
     public String getCartBadgeCount(){
         return page.locator(".shopping_cart_badge").textContent();
+    }
+
+    public Boolean logout(){
+        page.locator("#react-burger-menu-btn").click();
+        page.locator("#logout_sidebar_link").click();
+        //page.waitForURL("https://www.saucedemo.com/");
+        return page.url().equals(ConfigReader.getProperty("baseUrl"));
     }
 }

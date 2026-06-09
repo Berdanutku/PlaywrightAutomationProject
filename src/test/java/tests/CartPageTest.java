@@ -1,41 +1,37 @@
 package tests;
 
 import org.junit.jupiter.api.Test;
+import pages.CartPage;
 import pages.InventoryPage;
 import pages.LoginPage;
 import utils.ConfigReader;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class InventoryPageTest extends BaseTest{
+public class CartPageTest extends BaseTest{
 
     @Test
-    void verifyProductsLoaded(){
-        LoginPage loginPage=new LoginPage(page);
-        loginPage.navigate();
-        InventoryPage inventoryPage=loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
-        int productCount=inventoryPage.getProductCount();
-        System.out.println(productCount);
-
-        assertTrue(productCount>0);
-    }
-
-    @Test
-    void addProductToCartTest(){
+    void verifyProductsAddedToCartTest(){
         LoginPage loginPage=new LoginPage(page);
         loginPage.navigate();
         InventoryPage inventoryPage=loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
         inventoryPage.addBackpackToCart();
+        CartPage cartPage=new CartPage(page);
+        cartPage.openCartPage();
 
-        assertEquals("1",inventoryPage.getCartBadgeCount());
+        assertTrue(cartPage.isProductDisplayedInCart());
     }
 
     @Test
-    void logoutTest(){
+    void removeProductFromCartTest(){
         LoginPage loginPage=new LoginPage(page);
         loginPage.navigate();
         InventoryPage inventoryPage=loginPage.login(ConfigReader.getProperty("username"),ConfigReader.getProperty("password"));
-        assertTrue(inventoryPage.logout());
+        inventoryPage.addBackpackToCart();
+        CartPage cartPage=new CartPage(page);
+        cartPage.openCartPage();
+        cartPage.removeProductFromCart();
+
+        assertTrue(cartPage.isProductRemoved());
     }
 }

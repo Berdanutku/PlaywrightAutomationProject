@@ -4,7 +4,9 @@ import com.microsoft.playwright.Browser;
 import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.Playwright;
+import io.qameta.allure.Step;
 import org.junit.jupiter.api.*;
+import utils.ConfigReader;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
@@ -17,7 +19,7 @@ public class LoginPage {
     }
 
     public void navigate(){
-        page.navigate("https://www.saucedemo.com");
+        page.navigate(ConfigReader.getProperty("baseUrl"));
     }
 
     public void enterUsername(String username){
@@ -32,6 +34,7 @@ public class LoginPage {
         page.locator("#login-button").click();
     }
 
+    @Step("Login with username: {username}")
     public InventoryPage login(String username, String password){
         enterUsername(username);
         enterPassword(password);
