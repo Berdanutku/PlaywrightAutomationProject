@@ -26,14 +26,12 @@ jobs:
       - name: Run Tests
         run: mvn clean test
 
-      - name: Install Allure
-        run: |
-          curl -o allure.tgz -Ls https://github.com/allure-framework/allure2/releases/latest/download/allure-2.34.1.tgz
-          tar -zxvf allure.tgz
-
       - name: Generate Allure Report
-        run: |
-          ./allure-2.34.1/bin/allure generate allure-results -o allure-report --clean
+        uses: simple-elf/allure-report-action@master
+        if: always()
+        with:
+          allure_results: allure-results
+          allure_report: allure-report
 
       - name: Upload Allure Report
         uses: actions/upload-artifact@v4
