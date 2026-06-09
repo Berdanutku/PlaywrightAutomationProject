@@ -1,31 +1,27 @@
-name: Playwright Tests
+name: Publish Allure Report
 on:
   push:
-      branches:
-        - master
-
+    branches:
+      - master
 jobs:
-  test:
+  publish-report:
     runs-on: ubuntu-latest
+    permissions: 
+      contents: write
     steps:
-      - name: Checkout Code
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Setup Java
         uses: actions/setup-java@v4
         with:
           distribution: temurin
-          java-version: 17
-
-      - name: Cache Maven
-        uses: actions/cache@v4
-        with:
-          path: ~/.m2
-          key: maven-cache
+          java-version: 17 
 
       - name: Run Tests
         run: mvn clean test
 
+        
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@master
         if: always()
@@ -33,12 +29,9 @@ jobs:
           allure_results: allure-results
           allure_report: allure-report
 
-      - name: Upload Allure Report
-        uses: actions/upload-artifact@v4
+      - name: Deploy Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         if: always()
-
         with:
-          name: allure-report
-          path: allure-report
-    
-      
+          github_token: ${{  secrets.GITHUB_TOKEN  }}
+          publish_dir: ./allure-report
