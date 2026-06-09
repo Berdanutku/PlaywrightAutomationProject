@@ -1,0 +1,7 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"","454","addProductToCartTest()","","2026-06-09","passed","2026-06-09","","tests.InventoryPageTest","tests.InventoryPageTest","addProductToCartTest"
+"","651","verifyProductsAddedToCartTest()","","2026-06-09","passed","2026-06-09","","tests.CartPageTest","tests.CartPageTest","verifyProductsAddedToCartTest"
+"","1381","logoutTest()","","2026-06-09","passed","2026-06-09","","tests.InventoryPageTest","tests.InventoryPageTest","logoutTest"
+"Verify successful login with valid credentials","465","successfulLoginTest()","","2026-06-09","passed","2026-06-09","","tests.SuccessfulLoginTest","tests.SuccessfulLoginTest","successfulLoginTest"
+"","465","verifyProductsLoaded()","","2026-06-09","passed","2026-06-09","","tests.InventoryPageTest","tests.InventoryPageTest","verifyProductsLoaded"
+"","534","removeProductFromCartTest()","","2026-06-09","passed","2026-06-09","","tests.CartPageTest","tests.CartPageTest","removeProductFromCartTest"
