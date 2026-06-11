@@ -4,6 +4,7 @@ import api.base.ApiBaseTest;
 import api.clients.AuthClient;
 import api.requests.LoginRequest;
 import api.responses.LoginResponse;
+import api.utils.JsonUtils;
 import api.utils.TokenManager;
 import com.microsoft.playwright.APIResponse;
 import io.qameta.allure.internal.shadowed.jackson.core.JsonProcessingException;
@@ -26,13 +27,13 @@ public class AuthApiTest extends ApiBaseTest {
         loginRequest.setUsername("mor_2314");
         loginRequest.setPassword("83r5^_");
 
-        ObjectMapper mapper=new ObjectMapper();
-        String body = mapper.writeValueAsString(loginRequest);
+        String body = JsonUtils.toJson(loginRequest);
+
         APIResponse response=authClient.login(body);
         System.out.println(response.text());
         assertEquals(201,response.status());
 
-        LoginResponse loginResponse=mapper.readValue(response.text(), LoginResponse.class);
+        LoginResponse loginResponse=JsonUtils.fromJson(response.text(), LoginResponse.class);
         assertNotNull(loginResponse.getToken());
     }
 
@@ -43,8 +44,8 @@ public class AuthApiTest extends ApiBaseTest {
         loginRequest.setUsername("mor_2314");
         loginRequest.setPassword("wrong");
 
-        ObjectMapper mapper=new ObjectMapper();
-        String body=mapper.writeValueAsString(loginRequest);
+
+        String body=JsonUtils.toJson(loginRequest);
         APIResponse response=authClient.login(body);
          System.out.println(response.text());
          assertEquals(401,response.status());
