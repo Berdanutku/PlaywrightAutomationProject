@@ -1,7 +1,7 @@
-package pages;
+package ui.pages;
 
 import com.microsoft.playwright.Page;
-import utils.ConfigReader;
+import ui.utils.ConfigReader;
 
 public class InventoryPage {
 

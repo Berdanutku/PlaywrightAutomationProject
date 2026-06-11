@@ -1,4 +1,4 @@
-package tests;
+package ui.tests;
 
 import com.microsoft.playwright.*;
 import org.junit.jupiter.api.AfterAll;

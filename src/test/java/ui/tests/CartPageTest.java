@@ -1,10 +1,10 @@
-package tests;
+package ui.tests;
 
 import org.junit.jupiter.api.Test;
-import pages.CartPage;
-import pages.InventoryPage;
-import pages.LoginPage;
-import utils.ConfigReader;
+import ui.pages.CartPage;
+import ui.pages.InventoryPage;
+import ui.pages.LoginPage;
+import ui.utils.ConfigReader;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 

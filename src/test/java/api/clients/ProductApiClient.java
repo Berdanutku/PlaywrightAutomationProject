@@ -3,7 +3,7 @@ package api.clients;
 import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.APIResponse;
 import com.microsoft.playwright.options.RequestOptions;
-import utils.ConfigReader;
+import ui.utils.ConfigReader;
 
 public class ProductApiClient {
     private final APIRequestContext request;

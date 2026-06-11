@@ -1,9 +1,9 @@
-package tests;
+package ui.tests;
 
 import org.junit.jupiter.api.Test;
-import pages.InventoryPage;
-import pages.LoginPage;
-import utils.ConfigReader;
+import ui.pages.InventoryPage;
+import ui.pages.LoginPage;
+import ui.utils.ConfigReader;
 import io.qameta.allure.*;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;

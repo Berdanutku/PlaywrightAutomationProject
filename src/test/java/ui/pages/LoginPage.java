@@ -1,12 +1,8 @@
-package pages;
+package ui.pages;
 
-import com.microsoft.playwright.Browser;
-import com.microsoft.playwright.BrowserType;
 import com.microsoft.playwright.Page;
-import com.microsoft.playwright.Playwright;
 import io.qameta.allure.Step;
-import org.junit.jupiter.api.*;
-import utils.ConfigReader;
+import ui.utils.ConfigReader;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
 
